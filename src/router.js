@@ -1,21 +1,27 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
-import About from './views/About.vue'
+// import Home from './views/Home.vue'
+// import About from './views/About.vue'
 
 Vue.use(Router)
+/* eslint-disable */
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
       name: 'home',
-      component: Home
+      components: {
+        abc:resolve => { return require([ '@/views/Home.vue' ], resolve) }
+      }
     },
     {
       path: '/about',
       name: 'about',
-      component: About
+      components:  {
+        abc:resolve => { return require([ '@/views/About.vue' ], resolve) }
+      }
     }
   ]
 })
